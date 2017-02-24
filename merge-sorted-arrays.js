@@ -3,18 +3,18 @@ var a2 = [2, 4, 6, 7,];
 
 function merge(a, b){
   var resultArr = [];
-  for(var i = 0; i < a.length; i++){
-    for (var j = 0; j < b.length; j++){
-      while (a.length && b.length){
-        if(b[j] <= a[i]){
-          resultArr.push(b.shift());
-        } else {
+    while (a.length && b.length){
+        if(a[0] <= b[0]){
           resultArr.push(a.shift());
+        } else {
+          resultArr.push(b.shift());
         }
-      }
     }
-    resultArr.push(a[i]);
+    if(a.length){
+      resultArr = resultArr.concat(a);
+    } else if (b.length){
+      resultArr = resultArr.concat(b);
   }
-  return resultArr;
+    return resultArr;
 }
 console.log(merge(a1, a2));
